@@ -25,10 +25,12 @@ jobs:
     inputs:
       testResultsFormat: VSTest
       testResultsFiles: '**/*.trx' 
-  - task: PublishBuildArtifacts@1
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish pipeline artifact'
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'TestArtifactPrachi'
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: 'testPrachi2'
+      publishLocation: 'pipeline'
 
 - job: Windows
   pool:
@@ -51,6 +53,9 @@ jobs:
       testResultsFormat: VSTest
       testResultsFiles: '**/*.trx' 
 
-  - task: PublishBuildArtifacts@1
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish pipeline artifact'
     inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)'
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: 'testPrachi'
+      publishLocation: 'pipeline'
