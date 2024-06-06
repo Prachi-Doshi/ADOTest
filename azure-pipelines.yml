@@ -26,6 +26,9 @@ jobs:
       testResultsFormat: VSTest
       testResultsFiles: '**/*.trx' 
   - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'TestArtifactPrachi'
 
 - job: Windows
   pool:
@@ -50,4 +53,4 @@ jobs:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: '$(Build.ArtifactStagingDirectory)/**/*'
+      pathToPublish: '$(Build.ArtifactStagingDirectory)'
